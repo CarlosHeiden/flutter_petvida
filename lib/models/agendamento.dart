@@ -1,31 +1,36 @@
 // lib/models/agendamento.dart
+
+
 class Agendamento {
+  final int? id;
   final int idAnimal;
-  final String nomeAnimal; // Adicione este campo para facilitar a exibição
-  final int? idVeterinario;
+  final String? nomeAnimal;
+  final int idServicos;
+  final String? nomeServico; // Opcional, para facilitar a exibição
   final DateTime dataAgendamento;
   final String horaAgendamento;
-  final String tipoServico;
   final String? observacoes;
 
   Agendamento({
+    this.id,
     required this.idAnimal,
-    required this.nomeAnimal,
-    this.idVeterinario,
+    this.nomeAnimal,
+    required this.idServicos,
+    this.nomeServico,
     required this.dataAgendamento,
     required this.horaAgendamento,
-    required this.tipoServico,
     this.observacoes,
   });
 
   factory Agendamento.fromJson(Map<String, dynamic> json) {
     return Agendamento(
+      id: json['id'],
       idAnimal: json['id_animal'],
-      nomeAnimal: json['nome_animal'], // Supondo que a API Django retorne o nome do animal
-      idVeterinario: json['id_veterinario'],
+      nomeAnimal: json['nome_animal'],
+      idServicos: json['id_servicos'],
+      nomeServico: json['nome_servico'],
       dataAgendamento: DateTime.parse(json['data_agendamento']),
       horaAgendamento: json['hora_agendamento'],
-      tipoServico: json['tipo_servico'],
       observacoes: json['observacoes'],
     );
   }
@@ -33,10 +38,9 @@ class Agendamento {
   Map<String, dynamic> toJson() {
     return {
       'id_animal': idAnimal,
-      'id_veterinario': idVeterinario,
-      'data_agendamento': dataAgendamento.toIso8601String().substring(0, 10), // Formato YYYY-MM-DD
+      'id_servicos': idServicos,
+      'data_agendamento': dataAgendamento.toIso8601String().substring(0, 10),
       'hora_agendamento': horaAgendamento,
-      'tipo_servico': tipoServico,
       'observacoes': observacoes,
     };
   }

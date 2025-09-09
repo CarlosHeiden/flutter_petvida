@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: ListTile(
                     leading: const Icon(Icons.pets, color: Colors.blueAccent),
-                    title: Text(agendamento.tipoServico),
+                    title: Text(agendamento.nomeServico ?? 'Serviço Desconhecido'),
                     subtitle: Text(
                       '${agendamento.nomeAnimal} - '
                       '${agendamento.dataAgendamento.day}/${agendamento.dataAgendamento.month} às ${agendamento.horaAgendamento}',

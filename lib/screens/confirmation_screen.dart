@@ -57,7 +57,7 @@ class ConfirmationScreen extends StatelessWidget {
                       _buildDetailRow(
                         icon: Icons.pets,
                         label: 'Serviço',
-                        value: agendamento.tipoServico,
+                        value: agendamento.nomeServico ?? 'N/A',
                       ),
                       _buildDetailRow(
                         icon: Icons.calendar_today,
